@@ -37,6 +37,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack(int sight)
     {
-        Debug.Log(sight);
+        
     }
 }
