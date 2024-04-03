@@ -32,7 +32,11 @@ public class PlayerAttack : MonoBehaviour
     {
         attackVector.x = Input.GetAxis("HorizontalArrows");
         attackVector.y = Input.GetAxis("VerticalArrows");
-        sight = attackVector.x < 0 ? 1 : attackVector.x > 0 ? 2 : attackVector.y < 0 ? 3 : attackVector.y > 0 ? 0 : sight;
+        sight = attackVector.x < 0 ? 1 : 
+            attackVector.x > 0 ? 2 : 
+            //attackVector.y < 0 ? 3 : 
+            //attackVector.y > 0 ? 0 :
+            sight;
         spriteRenderer.sprite = sprites[sight];
 
         if (Input.GetKeyDown(KeyCode.Q))
