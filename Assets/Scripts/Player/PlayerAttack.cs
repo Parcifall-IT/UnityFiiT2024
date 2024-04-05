@@ -7,7 +7,9 @@ using static UnityEditor.PlayerSettings;
 public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private int sight;
+    public GameObject Gun;
+
+    private double attackAngle;
 
     public int choosedWeapon;
 
@@ -17,27 +19,34 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sight = 0;
+        attackAngle = 0;
         choosedWeapon = 1;
     }
 
     void Update()
     {
+        pos = Camera.main.WorldToScreenPoint(transform.localPosition);
+
+        attackAngle = FindAngle(pos, Input.mousePosition);
+        if (facingRight)
+            attackAngle = 360 - attackAngle;
+
+
         if (Input.GetKeyDown(KeyCode.Q))
             choosedWeapon = 0;
 
         if (Input.GetKeyDown(KeyCode.E))
             choosedWeapon = 1;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             if (choosedWeapon == 0)
-                DistanceAttack(sight);
+                DistanceAttack(attackAngle);
             else
-                MeleeAttack(sight);
+                MeleeAttack(attackAngle);
         }
 
-        pos = Camera.main.WorldToScreenPoint(transform.localPosition);
+        RotateGun(attackAngle);
         LookAtCursor();
     }
 
@@ -54,13 +63,24 @@ public class PlayerAttack : MonoBehaviour
         transform.localScale = new Vector2(-vec.x, vec.y);
     }
 
-    void MeleeAttack(int sight)
+    private double FindAngle(Vector2 a, Vector2 b)
     {
-        Debug.Log(("Melee", sight));
+        var angle = Mathf.Acos((b.y - a.y) / Mathf.Sqrt((b - a).x * (b - a).x + (b - a).y * (b - a).y)) * 180 / Mathf.PI;
+        return angle;
     }
 
-    void DistanceAttack(int sight)
+    void MeleeAttack(double angle)
     {
-        Debug.Log(("Distance", sight));
+        Debug.Log(("Melee"));
+    }
+
+    void DistanceAttack(double angle)
+    {
+        Debug.Log(("Distance"));
+    }
+
+    void RotateGun(double angle)
+    {
+        Gun.transform.rotation = Quaternion.Euler(0, 0, (float)attackAngle);
     }
 }
