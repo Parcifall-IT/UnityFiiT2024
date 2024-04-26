@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class ButtonColor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject text;
+    [SerializeField] private GameObject text;
     private TMP_Text text1;
     private Color old;
-    public Color neww;
+    [SerializeField] private Color neww;
 
     void Start()
     {

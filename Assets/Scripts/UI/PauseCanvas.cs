@@ -7,13 +7,13 @@ using UnityEngine.Audio;
 
 public class PauseCanvas : MonoBehaviour
 {
-    public bool isOpened = false; //Открыто ли меню
-    public int isStopped = 1; //Остановлено ли время
-    public float volume = 0; //Громкость
-    public int quality = 0; //Качество
-    public bool isFullscreen = false; //Полноэкранный режим
-    public AudioMixer audioMixer; //Регулятор громкости
-    public Dropdown resolutionDropdown; //Список с разрешениями для игры
+    [SerializeField] private bool isOpened = false; //Открыто ли меню
+    [SerializeField] private int isStopped = 1; //Остановлено ли время
+    [SerializeField] private float volume = 0; //Громкость
+    [SerializeField] private int quality = 0; //Качество
+    [SerializeField] private bool isFullscreen = false; //Полноэкранный режим
+    [SerializeField] private AudioMixer audioMixer; //Регулятор громкости
+    [SerializeField] private Dropdown resolutionDropdown; //Список с разрешениями для игры
     private Resolution[] resolutions; //Список доступных разрешений
     private int currResolutionIndex = 0; //Текущее разрешение
 

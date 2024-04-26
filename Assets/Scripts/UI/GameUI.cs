@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameUI : MonoBehaviour
 {
-    public TMP_Text text;
+    [SerializeField] private TMP_Text text;
     private GameObject player;
 
     private int choosedWeapon;
