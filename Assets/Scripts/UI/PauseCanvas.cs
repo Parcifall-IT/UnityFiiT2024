@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class PauseCanvas : MonoBehaviour
 {
     [SerializeField] private bool isOpened = false; //Открыто ли меню
-    [SerializeField] private int isStopped = 1; //Остановлено ли время
     [SerializeField] private float volume = 0; //Громкость
     [SerializeField] private int quality = 0; //Качество
     [SerializeField] private bool isFullscreen = false; //Полноэкранный режим
@@ -17,10 +17,10 @@ public class PauseCanvas : MonoBehaviour
     private Resolution[] resolutions; //Список доступных разрешений
     private int currResolutionIndex = 0; //Текущее разрешение
 
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject playerPlay;
+    [SerializeField] private GameObject playerPause;
+
+    [SerializeField] private GameObject defaultButton;
 
     void Update()
     {
@@ -32,10 +32,14 @@ public class PauseCanvas : MonoBehaviour
 
     public void ShowHideMenu()
     {
-        isStopped = (isStopped + 1) % 2;
-        Time.timeScale = isStopped;
-
+        GamePause.SetPause(!isOpened);
+        
         isOpened = !isOpened;
         GetComponent<Canvas>().enabled = isOpened;
+
+        playerPlay.SetActive(!isOpened);
+        playerPause.SetActive(isOpened);
+
+        EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
     }
 }

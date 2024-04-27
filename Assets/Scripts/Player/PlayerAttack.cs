@@ -35,6 +35,9 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        if (GamePause.IsPaused)
+            return;
+
         pos = Camera.main.WorldToScreenPoint(transform.localPosition);
 
         attackAngle = FindAngle(pos, Input.mousePosition);

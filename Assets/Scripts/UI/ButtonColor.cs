@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonColor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ButtonColor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     [SerializeField] private GameObject text;
     private TMP_Text text1;
@@ -24,6 +24,16 @@ public class ButtonColor : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
     public void OnPointerExit(PointerEventData eventData)
+    {
+        text1.color = old;
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        text1.color = neww;
+    }
+
+    public void OnDeselect(BaseEventData eventData)
     {
         text1.color = old;
     }

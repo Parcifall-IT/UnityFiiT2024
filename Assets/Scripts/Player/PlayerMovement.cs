@@ -19,17 +19,16 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        if (GamePause.IsPaused)
+            return;
+
         moveVector.x = Input.GetAxis("Horizontal");
         moveVector.y = Input.GetAxis("Vertical");
         rb.MovePosition(rb.position + moveVector * speed * Time.deltaTime);
         if (moveVector.x != 0 || moveVector.y != 0)
-            anim.SetBool("move", true);
+            anim.SetBool("IsRunning", true);
         else
-            anim.SetBool("move", false);
-
-
-        if (Input.GetKeyDown(KeyCode.F1))
-            anim.Play("MIKEY");
+            anim.SetBool("IsRunning", false);
     }
 
 }
