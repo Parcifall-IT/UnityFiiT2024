@@ -93,7 +93,6 @@ public class PlayerAttack : MonoBehaviour
             if (iDamageable != null)
             {
                 iDamageable.Damage(damageAmount);
-                Debug.Log((iDamageable.GetHealth()));
             }
         }
     }

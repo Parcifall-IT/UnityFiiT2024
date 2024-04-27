@@ -6,7 +6,7 @@ using UnityEngine;
 public class PuppetHealth : MonoBehaviour, IDamageable
 {
 
-    [SerializeField] private float maxHealth = 3f;
+    [SerializeField] private float maxHealth = float.MaxValue;
     private float currentHeath;
 
     public bool HasTakenDamage { get; set; }
@@ -20,6 +20,8 @@ public class PuppetHealth : MonoBehaviour, IDamageable
     {
         HasTakenDamage = true;
         currentHeath -= damageAmount;
+
+        DamageUI.Instance.AddText((int)damageAmount, GetComponent<Transform>().position);
 
         if (currentHeath <= 0) 
         {
