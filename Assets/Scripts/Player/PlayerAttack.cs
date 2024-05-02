@@ -25,6 +25,8 @@ public class PlayerAttack : MonoBehaviour
 
     public bool ShouldBeDamageing { get; private set; } = false;
 
+    [SerializeField] private Animator animator;
+
 
     void Start()
     {
@@ -54,13 +56,30 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (choosedWeapon == 0)
-                DistanceAttack(attackAngle);
+                StartCoroutine(DistanceAttackAnimated(attackAngle));
             else
-                MeleeAttack(attackAngle);
+                StartCoroutine(MeleeAttackAnimated(attackAngle));
+            // MeleeAttack(attackAngle);
         }
 
         RotateGun(attackAngle);
         LookAtCursor();
+    }
+    
+    IEnumerator MeleeAttackAnimated(double angle)
+    {
+        animator.SetTrigger("AttackMelee");
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        animator.ResetTrigger("AttackMelee");
+        MeleeAttack(angle);
+    }
+
+    IEnumerator DistanceAttackAnimated(double angle)
+    {
+        animator.SetTrigger("AttackDistance");
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        animator.ResetTrigger("AttackDistance");
+        DistanceAttack(angle);
     }
 
     void LookAtCursor()
@@ -78,7 +97,8 @@ public class PlayerAttack : MonoBehaviour
 
     private double FindAngle(Vector2 a, Vector2 b)
     {
-        var angle = Mathf.Acos((b.y - a.y) / Mathf.Sqrt((b - a).x * (b - a).x + (b - a).y * (b - a).y)) * 180 / Mathf.PI;
+        var angle = Mathf.Acos((b.y - a.y) / Mathf.Sqrt((b - a).x * (b - a).x + (b - a).y * (b - a).y)) * 180 /
+                    Mathf.PI;
         return angle;
     }
 
