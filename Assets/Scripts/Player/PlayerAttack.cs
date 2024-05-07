@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
@@ -27,6 +28,11 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] private GameObject weapon;
+    [SerializeField] private Sprite fork;
+    [SerializeField] private Sprite sword;
+    [SerializeField] private Sprite gun;
+
 
     void Start()
     {
@@ -48,18 +54,27 @@ public class PlayerAttack : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.Q))
+        {
+            weapon.GetComponent<SpriteRenderer>().sprite = gun;
             choosedWeapon = 0;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
+        {
+            weapon.GetComponent<SpriteRenderer>().sprite = fork;
             choosedWeapon = 1;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
             if (choosedWeapon == 0)
+            {
                 StartCoroutine(DistanceAttackAnimated(attackAngle));
+            }
             else
+            {
                 StartCoroutine(MeleeAttackAnimated(attackAngle));
-            // MeleeAttack(attackAngle);
+            }
         }
 
         RotateGun(attackAngle);
@@ -76,6 +91,7 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator DistanceAttackAnimated(double angle)
     {
+        
         animator.SetTrigger("AttackDistance");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         animator.ResetTrigger("AttackDistance");
