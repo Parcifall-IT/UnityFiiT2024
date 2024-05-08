@@ -94,7 +94,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     distanceTimer = 0;
                     animator.SetTrigger("AttackDistance");
-                    DistanceAttack(timeBtwDistance);
+                    DistanceAttack();
                 }
             }
             else
@@ -169,7 +169,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void DistanceAttack(double angle)
+    void DistanceAttack()
     {
         GetComponentInChildren<Arbalest>().Shoot();
     }

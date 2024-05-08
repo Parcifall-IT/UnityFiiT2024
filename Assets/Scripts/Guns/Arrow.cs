@@ -12,6 +12,10 @@ public class Arrow : MonoBehaviour
         "Frame"
     };
 
+    [SerializeField] private float damageAmount = 5f;
+    [SerializeField] private int through;
+
+
 
     void Start()
     {
@@ -22,13 +26,23 @@ public class Arrow : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, rotateZ);
 
         rb.velocity = transform.up * speed;
+
+        through = 1;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!IgnoreCollision.Contains(collision.name))
         {
-            Destroy(this.gameObject);
+            if (through <= 1)
+            {
+                Destroy(gameObject);
+            }
+
+            through -= 1;
+
+            if (collision.gameObject.TryGetComponent<IDamageable>(out var damageable))
+                damageable.Damage(damageAmount);
         }
     }
 }
