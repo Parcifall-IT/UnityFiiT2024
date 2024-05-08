@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private GameObject Gun;
+    [SerializeField] private ParticleSystem VFXMelee;
 
     private double attackAngle;
 
@@ -35,19 +36,29 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private float timeBtwMelee = 1f;
     private float meleeTimer;
-    [SerializeField] private float timeBtwDistance = 1f;
+    [SerializeField] private float timeBtwDistance = 1.5f;
     private float distanceTimer;
+    private bool canlook;
     public bool ShouldBeDamaging { get; private set; } = false;
     private List<IDamageable> iDamageables = new List<IDamageable>();
+
+    private float defaultWeaponRotation;
 
 
     void Start()
     {
+        VFXMelee = VFXMelee.GetComponent<ParticleSystem>();
+        VFXMelee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         attackAngle = 0;
         choosedWeapon = 1;
         meleeTimer = timeBtwMelee;
+        distanceTimer = timeBtwDistance;
+        weapon.GetComponent<SpriteRenderer>().sprite = fork;
+
+        defaultWeaponRotation = Gun.GetComponent<Transform>().localEulerAngles.z;
     }
 
     void Update()
@@ -71,6 +82,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             weapon.GetComponent<SpriteRenderer>().sprite = fork;
+            Gun.GetComponent<Transform>().localRotation = Quaternion.Euler(0, 0, defaultWeaponRotation);
             choosedWeapon = 1;
         }
 
@@ -82,6 +94,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     distanceTimer = 0;
                     animator.SetTrigger("AttackDistance");
+                    DistanceAttack(timeBtwDistance);
                 }
             }
             else
@@ -96,8 +109,12 @@ public class PlayerAttack : MonoBehaviour
         meleeTimer += Time.deltaTime;
         distanceTimer += Time.deltaTime;
 
-        RotateGun(attackAngle);
-        LookAtCursor();
+        canlook = meleeTimer > timeBtwMelee && distanceTimer > timeBtwDistance;
+
+        if (choosedWeapon == 0)
+            RotateGun(attackAngle);
+        if (canlook)
+            LookAtCursor();
     }
 
     void LookAtCursor()
@@ -122,7 +139,7 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator MeleeAttack()
     {
-        ShouldBeDamageing = true;
+        ShouldBeDamagingToTrue();
 
         while (ShouldBeDamageing)
         {
@@ -154,7 +171,7 @@ public class PlayerAttack : MonoBehaviour
 
     void DistanceAttack(double angle)
     {
-        Debug.Log(("Distance"));
+        GetComponentInChildren<Arbalest>().Shoot();
     }
 
     void RotateGun(double angle)
@@ -172,11 +189,13 @@ public class PlayerAttack : MonoBehaviour
     public void ShouldBeDamagingToTrue()
     {
         ShouldBeDamageing = true;
+        VFXMelee.Play();
     }
 
     public void ShouldBeDamagingToFalse()
     {
         ShouldBeDamageing = false;
+        VFXMelee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 
     #endregion
