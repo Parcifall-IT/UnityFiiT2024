@@ -24,21 +24,30 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float damageAmount = 1f;
     private RaycastHit2D[] hits;
 
-    public bool ShouldBeDamageing { get; private set; } = false;
+    public static bool ShouldBeDamageing { get; private set; } = false;
 
-    [SerializeField] private Animator animator;
+    private Animator animator;
 
     [SerializeField] private GameObject weapon;
     [SerializeField] private Sprite fork;
     [SerializeField] private Sprite sword;
     [SerializeField] private Sprite gun;
 
+    [SerializeField] private float timeBtwMelee = 1f;
+    private float meleeTimer;
+    [SerializeField] private float timeBtwDistance = 1f;
+    private float distanceTimer;
+    public bool ShouldBeDamaging { get; private set; } = false;
+    private List<IDamageable> iDamageables = new List<IDamageable>();
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         attackAngle = 0;
         choosedWeapon = 1;
+        meleeTimer = timeBtwMelee;
     }
 
     void Update()
@@ -69,33 +78,26 @@ public class PlayerAttack : MonoBehaviour
         {
             if (choosedWeapon == 0)
             {
-                StartCoroutine(DistanceAttackAnimated(attackAngle));
+                if (distanceTimer > timeBtwDistance)
+                {
+                    distanceTimer = 0;
+                    animator.SetTrigger("AttackDistance");
+                }
             }
             else
             {
-                StartCoroutine(MeleeAttackAnimated(attackAngle));
+                if (meleeTimer > timeBtwMelee)
+                {
+                    meleeTimer = 0;
+                    animator.SetTrigger("AttackMelee");
+                }
             }
         }
+        meleeTimer += Time.deltaTime;
+        distanceTimer += Time.deltaTime;
 
         RotateGun(attackAngle);
         LookAtCursor();
-    }
-    
-    IEnumerator MeleeAttackAnimated(double angle)
-    {
-        animator.SetTrigger("AttackMelee");
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        animator.ResetTrigger("AttackMelee");
-        MeleeAttack(angle);
-    }
-
-    IEnumerator DistanceAttackAnimated(double angle)
-    {
-        
-        animator.SetTrigger("AttackDistance");
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        animator.ResetTrigger("AttackDistance");
-        DistanceAttack(angle);
     }
 
     void LookAtCursor()
@@ -118,18 +120,35 @@ public class PlayerAttack : MonoBehaviour
         return angle;
     }
 
-    void MeleeAttack(double angle)
+    public IEnumerator MeleeAttack()
     {
-        hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attacableLayer);
+        ShouldBeDamageing = true;
 
-        for (var i = 0; i < hits.Length; i++)
+        while (ShouldBeDamageing)
         {
-            var iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+            hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attacableLayer);
 
-            if (iDamageable != null)
+            for (var i = 0; i < hits.Length; i++)
             {
-                iDamageable.Damage(damageAmount);
+                var iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                if (iDamageable != null && !iDamageable.HasTakenDamage)
+                {
+                    iDamageable.Damage(damageAmount);
+                    iDamageables.Add(iDamageable);
+                }
             }
+            yield return null;
+        }
+
+        ReturnAttackablesToDamageable();
+    }
+
+    private void ReturnAttackablesToDamageable()
+    {
+        foreach (var thing in iDamageables)
+        {
+            thing.HasTakenDamage = false;
         }
     }
 
@@ -147,4 +166,18 @@ public class PlayerAttack : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
     }
+
+    #region Animation Triggers
+
+    public void ShouldBeDamagingToTrue()
+    {
+        ShouldBeDamageing = true;
+    }
+
+    public void ShouldBeDamagingToFalse()
+    {
+        ShouldBeDamageing = false;
+    }
+
+    #endregion
 }
