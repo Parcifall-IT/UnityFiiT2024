@@ -17,7 +17,7 @@ public class CameraSwitcher : MonoBehaviour
                 return;
             }
             isInside = true;
-            nextCamera.gameObject.SetActive(true);
+            nextCamera.Priority = 10;
         }
     }
 
@@ -25,7 +25,7 @@ public class CameraSwitcher : MonoBehaviour
     {
         if (other.CompareTag("Player") && isInside)
         {
-            nextCamera.gameObject.SetActive(false);
+            nextCamera.Priority = 0;
             isInside = false;
         }
     }
