@@ -19,7 +19,6 @@ public class DamageUI : MonoBehaviour
         {
             var delta = 1f - (Timer / maxTime);
             var pos = unitPosition + new Vector2(delta, delta) * direction;
-            pos = camera.WorldToScreenPoint(pos);
 
             UIText.transform.position = pos;
         }
