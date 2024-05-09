@@ -10,6 +10,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private float currentHeath;
 
     [SerializeField] private Image healthBar;
+    [SerializeField] private GameObject alive;
+    [SerializeField] private GameObject dead;
+
 
     void Start()
     {
@@ -37,6 +40,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        alive.SetActive(false);
+        dead.SetActive(true);
+        GetComponent<BoxCollider2D>().enabled = true;
         Debug.Log("Man im dead");
     }
 }

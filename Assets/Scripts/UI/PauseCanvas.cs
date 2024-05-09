@@ -33,7 +33,8 @@ public class PauseCanvas : MonoBehaviour
     public void ShowHideMenu()
     {
         GamePause.SetPause(!isOpened);
-        
+        Time.timeScale = isOpened ? 1 : 0;
+
         isOpened = !isOpened;
         GetComponent<Canvas>().enabled = isOpened;
 

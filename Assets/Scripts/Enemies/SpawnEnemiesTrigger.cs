@@ -5,12 +5,12 @@ using UnityEngine;
 public class SpawnEnemiesTrigger : MonoBehaviour
 {
     [SerializeField] GameObject EnemyType;
-    [SerializeField] int AmountOfEnemies;
-    [SerializeField] string TagFilter;
-    [SerializeField] float minX;
-    [SerializeField] float maxX;
-    [SerializeField] float minY;
-    [SerializeField] float maxY;
+    [SerializeField] int AmountOfEnemies = 1;
+    [SerializeField] string TagFilter = "Player";
+    [SerializeField] float minX = -13;
+    [SerializeField] float maxX = 13;
+    [SerializeField] float minY = -11;
+    [SerializeField] float maxY = 11;
     private float xPos;
     private float yPos;
     private int spawnedEnemies;
@@ -24,7 +24,10 @@ public class SpawnEnemiesTrigger : MonoBehaviour
         {
             SpawnEnemies();
             isAbleToSpawn = false;
-        } 
+        }
+
+        spawnedEnemies = 0;
+        isAbleToSpawn = true;
     }
 
     void SpawnEnemies()

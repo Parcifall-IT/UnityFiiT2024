@@ -9,7 +9,8 @@ public class Arrow : MonoBehaviour
     private List<string> IgnoreCollision = new List<string>() 
     {
         "Player",
-        "Frame"
+        "Frame",
+        "SpawnWaveButton"
     };
 
     [SerializeField] private float damageAmount = 5f;
