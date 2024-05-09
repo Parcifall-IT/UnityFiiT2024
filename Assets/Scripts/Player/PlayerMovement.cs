@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = transform.GetChild(0).GetComponent<Animator>();
+        anim = transform.GetComponent<Animator>();
     }
 
     

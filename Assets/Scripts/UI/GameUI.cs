@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text text;
     private GameObject player;
+
+
+    [SerializeField] private Image Q;
+    [SerializeField] private Image E;
 
     private int choosedWeapon;
 
@@ -18,6 +22,17 @@ public class GameUI : MonoBehaviour
     void Update()
     {
         choosedWeapon = player.GetComponent<PlayerAttack>().choosedWeapon;
-        text.text = choosedWeapon == 0 ? "bow" : "sword";
+
+        if (choosedWeapon == 0)
+        {
+            Q.gameObject.SetActive(true);
+            E.gameObject.SetActive(false);
+        }
+
+        if (choosedWeapon == 1)
+        {
+            Q.gameObject.SetActive(false);
+            E.gameObject.SetActive(true);
+        }
     }
 }
