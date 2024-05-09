@@ -10,7 +10,9 @@ public class Arrow : MonoBehaviour
     {
         "Player",
         "Frame",
-        "SpawnWaveButton"
+        "SpawnWaveButton",
+        "AnotherRoom",
+        "Room"
     };
 
     [SerializeField] private float damageAmount = 5f;

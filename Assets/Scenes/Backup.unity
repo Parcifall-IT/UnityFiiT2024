@@ -8392,7 +8392,7 @@ GameObject:
   - component: {fileID: 1007547656}
   - component: {fileID: 1007547654}
   m_Layer: 0
-  m_Name: _obbyEmpty1
+  m_Name: LobbyEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11121,6 +11121,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6991435080674080105, guid: 8ce4e9fadaa080f49afc42f6422671c6, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 6991435080674080106, guid: 8ce4e9fadaa080f49afc42f6422671c6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
