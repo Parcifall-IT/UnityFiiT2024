@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         alive.SetActive(false);
         dead.SetActive(true);
-        GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<BoxCollider2D>().enabled = false;
         Debug.Log("Man im dead");
     }
 }
