@@ -45,4 +45,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         GetComponent<BoxCollider2D>().enabled = false;
         Debug.Log("Man im dead");
     }
+
+    public void RestoreHealth(int amount)
+    {
+        currentHeath += amount / maxHealth;
+        if (currentHeath > maxHealth)
+            currentHeath = maxHealth;
+        healthBar.GetComponent<Image>().fillAmount = currentHeath / maxHealth;
+    }
 }

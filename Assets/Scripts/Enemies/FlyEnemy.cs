@@ -7,7 +7,10 @@ public class FlyEnemy : MonoBehaviour, IDamageable
 {
 
     [SerializeField] private float maxHealth = 5f;
+    //[SerializeField] private PlayerCoins coins;
+    //private readonly int coinsToDrop = 10;
     private float currentHeath;
+    
 
     public bool HasTakenDamage { get; set; }
 
@@ -23,9 +26,15 @@ public class FlyEnemy : MonoBehaviour, IDamageable
 
         if (currentHeath <= 0)
         {
+            // OnEnemyKilled();
             Die();
         }
     }
+
+    // private void OnEnemyKilled()
+    // {
+    //     coins.AddCoins( coinsToDrop);
+    // }
 
     public float GetHealth()
     {
