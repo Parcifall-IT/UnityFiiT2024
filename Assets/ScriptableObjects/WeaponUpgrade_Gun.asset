@@ -17,4 +17,4 @@ MonoBehaviour:
   basePrice: 2000
   category: Upgrades
   healthRestored: 0
-  image: {fileID: 2800000, guid: 6a269b036a038a54585427956e0bc5e4, type: 3}
+  image: {fileID: 2800000, guid: dc70d98275356f9489f28892dc81953c, type: 3}

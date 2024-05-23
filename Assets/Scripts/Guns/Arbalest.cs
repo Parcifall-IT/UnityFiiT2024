@@ -45,4 +45,9 @@ public class Arbalest: MonoBehaviour
     {
         arrow.GetComponent<SpriteRenderer>().sprite = newArrow;
     }
+
+    public GameObject GetArrow()
+    {
+        return arrow;
+    }
 }

@@ -12,7 +12,8 @@ public class Arrow : MonoBehaviour
         "Frame",
         "SpawnWaveButton",
         "AnotherRoom",
-        "Room"
+        "Room",
+        "table"
     };
 
     [SerializeField] private float damageAmount = 5f;
@@ -47,5 +48,10 @@ public class Arrow : MonoBehaviour
             if (collision.gameObject.TryGetComponent<IDamageable>(out var damageable))
                 damageable.Damage(damageAmount);
         }
+    }
+
+    public void SetDamage(int ammount)
+    {
+        damageAmount = ammount;
     }
 }

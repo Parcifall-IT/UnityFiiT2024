@@ -55,13 +55,14 @@ public class ShopManager : MonoBehaviour
     {
         if (coins.SpendCoins(shopItems[btnNumber].basePrice))
         {
+            var name = shopItems[btnNumber].title;
             Debug.Log("Buy item: " + btnNumber);
-            Debug.Log(shopItems[btnNumber].title);
+            Debug.Log(name);
             if (shopItems[btnNumber].healthRestored > 0)
                 BuyHealthItem(shopItems[btnNumber]);
-            if (shopItems[btnNumber].title == "Arrows")
+            if (name == "Arrows")
                 BuyArrows();
-            if (shopItems[btnNumber].title == "Gun")
+            if (name == "Gun")
             {
                 var texture = shopItems[btnNumber].image;
                 var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), 
@@ -69,20 +70,34 @@ public class ShopManager : MonoBehaviour
                 
                 BuyNewGun(sprite);
             }
+            if (name is "Sword" || name is "Fork")
+            {
+                var texture = shopItems[btnNumber].image;
+                var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
+                    new Vector2(0.5f, 0.5f));
+                BuyNewSword(name, sprite);
+            }
             coins.UpdateCoinsText();
             CheckBuyAbility();
         }
     }
 
+    private void BuyNewSword(string name, Sprite sprite)
+    {
+        GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameUI>().ChangeMelee(sprite);
+        var damage = name == "Sword" ? 5 : 1;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().ChangeMelee(sprite, damage);
+    }
+
     private void BuyNewGun(Sprite newSprite)
     {
+        GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameUI>().ChangeDistance(newSprite);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().ChangeGun(newSprite);
     }
 
     private void BuyArrows()
     {
         GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().AddArrows();
-
     }
 
     private void AddCoins()

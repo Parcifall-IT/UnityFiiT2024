@@ -34,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Sprite fork;
     [SerializeField] private Sprite sword;
     [SerializeField] private Sprite gun;
+    [SerializeField] private Sprite bullet;
 
     [SerializeField] private float timeBtwMelee = 1f;
     private float meleeTimer;
@@ -204,7 +205,17 @@ public class PlayerAttack : MonoBehaviour
     public void ChangeGun(Sprite newGun)
     {
         gun = newGun;
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<SpriteRenderer>().sprite = bullet;
         if (choosedWeapon == 0)
             weapon.GetComponent<SpriteRenderer>().sprite = gun;
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<Arrow>().SetDamage(15);
+    }
+
+    public void ChangeMelee(Sprite newMelee, int damage)
+    {
+        damageAmount = damage;
+        fork = newMelee;
+        if (choosedWeapon == 1)
+            weapon.GetComponent<SpriteRenderer>().sprite = fork;
     }
 }

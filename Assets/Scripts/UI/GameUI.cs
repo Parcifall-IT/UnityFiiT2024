@@ -12,6 +12,9 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Image Q;
     [SerializeField] private Image E;
 
+    [SerializeField] private Image distance;
+    [SerializeField] private Image melee;
+
     private int choosedWeapon;
 
     void Start()
@@ -34,5 +37,15 @@ public class GameUI : MonoBehaviour
             Q.gameObject.SetActive(false);
             E.gameObject.SetActive(true);
         }
+    }
+
+    public void ChangeDistance(Sprite sprite)
+    {
+        distance.sprite = sprite;
+    }
+
+    public void ChangeMelee(Sprite sprite)
+    {
+        melee.sprite = sprite;
     }
 }
