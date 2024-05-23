@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponUpgrade_CoolSword
   m_EditorClassIdentifier: 
   title: Fork
-  description: "\U0001F610:O"
+  description: o_0
   basePrice: 0
   category: Upgrades
   healthRestored: 0

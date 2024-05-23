@@ -64,7 +64,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (GamePause.IsPaused)
+        if (GamePause.IsPaused || Time.timeScale == 0)
             return;
 
         pos = Camera.main.WorldToScreenPoint(transform.localPosition);
@@ -95,7 +95,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     distanceTimer = 0;
                     animator.SetTrigger("AttackDistance");
-                    DistanceAttack();
+                    //DistanceAttack();
                 }
             }
             else
@@ -200,4 +200,11 @@ public class PlayerAttack : MonoBehaviour
     }
 
     #endregion
+
+    public void ChangeGun(Sprite newGun)
+    {
+        gun = newGun;
+        if (choosedWeapon == 0)
+            weapon.GetComponent<SpriteRenderer>().sprite = gun;
+    }
 }

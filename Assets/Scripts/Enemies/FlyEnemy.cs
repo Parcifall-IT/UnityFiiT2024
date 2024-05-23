@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,6 +42,7 @@ public class FlyEnemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().AddCoins(Random.Range(1, 4));
         Destroy(gameObject);
     }
 }

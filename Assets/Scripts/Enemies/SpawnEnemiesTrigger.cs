@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemiesTrigger : MonoBehaviour
 {
     [SerializeField] GameObject EnemyType;
-    [SerializeField] int AmountOfEnemies = 1;
+    [SerializeField] int AmountOfEnemies;
     [SerializeField] string TagFilter = "Player";
     [SerializeField] float minX = -13;
     [SerializeField] float maxX = 13;
@@ -16,18 +15,26 @@ public class SpawnEnemiesTrigger : MonoBehaviour
     private int spawnedEnemies;
     private bool isAbleToSpawn = true;
 
+    private void Start()
+    {
+        AmountOfEnemies = 3;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        spawnedEnemies = 0;
+        var amountOfAliveEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if (amountOfAliveEnemies == 0)
+        {
+            isAbleToSpawn = true;
+        }
+
         if (!string.IsNullOrEmpty(TagFilter) && !collision.gameObject.CompareTag(TagFilter))
             return;
         if (isAbleToSpawn)
         {
             SpawnEnemies();
-            isAbleToSpawn = false;
         }
-
-        spawnedEnemies = 0;
-        isAbleToSpawn = true;
     }
 
     void SpawnEnemies()
@@ -38,6 +45,8 @@ public class SpawnEnemiesTrigger : MonoBehaviour
             yPos = Random.Range(minY, maxY);
             Instantiate(EnemyType, new Vector2(xPos, yPos), Quaternion.identity);
             spawnedEnemies++;
+            isAbleToSpawn = false;
         }
+        AmountOfEnemies += 2;
     }
 }

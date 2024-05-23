@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Serialization;
+using System;
+using UnityEngine.Rendering;
 
 public class ShopManager : MonoBehaviour
 {
@@ -54,11 +56,33 @@ public class ShopManager : MonoBehaviour
         if (coins.SpendCoins(shopItems[btnNumber].basePrice))
         {
             Debug.Log("Buy item: " + btnNumber);
+            Debug.Log(shopItems[btnNumber].title);
             if (shopItems[btnNumber].healthRestored > 0)
                 BuyHealthItem(shopItems[btnNumber]);
+            if (shopItems[btnNumber].title == "Arrows")
+                BuyArrows();
+            if (shopItems[btnNumber].title == "Gun")
+            {
+                var texture = shopItems[btnNumber].image;
+                var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), 
+                    new Vector2(0.5f, 0.5f));
+                
+                BuyNewGun(sprite);
+            }
             coins.UpdateCoinsText();
             CheckBuyAbility();
         }
+    }
+
+    private void BuyNewGun(Sprite newSprite)
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().ChangeGun(newSprite);
+    }
+
+    private void BuyArrows()
+    {
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().AddArrows();
+
     }
 
     private void AddCoins()

@@ -11,23 +11,31 @@ public class TableOutlineEffect : MonoBehaviour
     {
         if (outline != null)
         {
-            outline.SetActive(false);
+            outline.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
-    void OnMouseEnter()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (outline != null)
+        if (collision.name == "Player")
         {
-            outline.SetActive(true);
+            GetComponent<TableInteraction>().CanOpenShopToTrue();
+            if (outline != null)
+            {
+                outline.GetComponent<SpriteRenderer>().enabled = true;
+            }
         }
     }
 
-    void OnMouseExit()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (outline != null)
+        if (collision.gameObject.name == "Player")
         {
-            outline.SetActive(false);
+            GetComponent<TableInteraction>().CanOpenShopToFalse();
+            if (outline != null)
+            {
+                outline.GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
 }
