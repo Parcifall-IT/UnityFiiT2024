@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FlyEnemy : MonoBehaviour, IDamageable
 {
-
+    public event Action OnEnemyKilled;
     [SerializeField] private float maxHealth = 5f;
     //[SerializeField] private PlayerCoins coins;
     //private readonly int coinsToDrop = 10;
@@ -42,6 +44,7 @@ public class FlyEnemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        OnEnemyKilled();
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().AddCoins(Random.Range(1, 4));
         Destroy(gameObject);
     }

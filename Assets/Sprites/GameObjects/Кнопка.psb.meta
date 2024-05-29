@@ -89,7 +89,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: "\u0421\u043B\u043E\u0439 1"
+  - name: Layer 3 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -100,7 +100,7 @@ ScriptedImporter:
       y: 4
       width: 471
       height: 472
-    spriteID: 276d2fdf60a41bc479d10862652e7f34
+    spriteID: d7015f45e4e0fcf4b98ef4f693bb48ac
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -111,32 +111,61 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -16, y: -16}
+  - name: "\u0421\u043B\u043E\u0439 1"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 484
+      width: 471
+      height: 472
+    spriteID: bb8e443a9affaa345965e3ea0cb3a880
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -16, y: 464}
   platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
   importedTextureWidth: 512
-  importedTextureHeight: 512
+  importedTextureHeight: 1024
   documentSize: {x: 512, y: 512}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
   spriteCategoryList:
     categories: []
   textureActualWidth: 512
-  textureActualHeight: 512
+  textureActualHeight: 1024
   spritePackingTag: 
   resliceFromLayer: 0
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Layer 3 2
+    spriteName: Layer 3 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d7015f45e4e0fcf4b98ef4f693bb48ac
+    layerID: 0
+    mosaicPosition: {x: 4, y: 4}
   - name: "\u0421\u043B\u043E\u0439 1"
     spriteName: "\u0421\u043B\u043E\u0439 1"
     isGroup: 0
     parentIndex: -1
-    spriteID: 276d2fdf60a41bc479d10862652e7f34
-    layerID: 2
-    mosaicPosition: {x: 4, y: 4}
+    spriteID: bb8e443a9affaa345965e3ea0cb3a880
+    layerID: -166824984
+    mosaicPosition: {x: 4, y: 484}
   characterData:
     bones: []
     parts: []

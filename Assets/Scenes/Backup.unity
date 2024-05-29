@@ -7148,6 +7148,26 @@ PrefabInstance:
       propertyPath: playerCoins
       value: 
       objectReference: {fileID: 2088188713}
+    - target: {fileID: 83811398084041863, guid: 9f34910b07baf9a448bcbce271d36d12, type: 3}
+      propertyPath: pressedButton
+      value: 
+      objectReference: {fileID: 1426075670}
+    - target: {fileID: 1211548725589886917, guid: 9f34910b07baf9a448bcbce271d36d12, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517630863699106750, guid: 9f34910b07baf9a448bcbce271d36d12, type: 3}
+      propertyPath: m_Name
+      value: NormalState
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456619395342342446, guid: 9f34910b07baf9a448bcbce271d36d12, type: 3}
+      propertyPath: m_Name
+      value: PressedState
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456619395342342446, guid: 9f34910b07baf9a448bcbce271d36d12, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7401250185405886723, guid: 9f34910b07baf9a448bcbce271d36d12, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -10650,6 +10670,11 @@ Transform:
   m_Father: {fileID: 1409738386}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1426075670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3456619395342342446, guid: 9f34910b07baf9a448bcbce271d36d12, type: 3}
+  m_PrefabInstance: {fileID: 487826078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1431071012
 PrefabInstance:
   m_ObjectHideFlags: 0
