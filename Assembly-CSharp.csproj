@@ -51,7 +51,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Other\TableInteraction.cs" />
+     <Compile Include="Assets\Scripts\UI\SceneTransition.cs" />
      <Compile Include="Assets\Scripts\Enemies\SpawnEnemiesTrigger.cs" />
+     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
      <Compile Include="Assets\Scripts\UI\GamePause.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCoins.cs" />
      <Compile Include="Assets\Scripts\Other\CloseUpgradeMenuScript.cs" />
@@ -71,6 +73,7 @@
      <Compile Include="Assets\Scripts\Other\ShopTemplate.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+     <Compile Include="Assets\Scripts\UI\EndGameManager.cs" />
      <Compile Include="Assets\Scripts\Enemies\ChasePlayer.cs" />
      <Compile Include="Assets\Scripts\Guns\Arrow.cs" />
      <Compile Include="Assets\Scripts\Other\TableOutlineEffect.cs" />

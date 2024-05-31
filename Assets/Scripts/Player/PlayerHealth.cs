@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
@@ -12,11 +10,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] private Image healthBar;
     [SerializeField] private GameObject alive;
     [SerializeField] private GameObject dead;
+    private EndGameManager endGameManager;
 
 
     void Start()
     {
         currentHeath = maxHealth;
+        endGameManager = FindObjectOfType<EndGameManager>();
     }
 
     public void Damage(float damageAmount)
@@ -44,6 +44,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         dead.SetActive(true);
         GetComponent<BoxCollider2D>().enabled = false;
         Debug.Log("Man im dead");
+        
+        if (endGameManager != null)
+            endGameManager.ShowEndGameScreen();
+        else
+            Debug.LogError("EndGameManager not found");
     }
 
     public void RestoreHealth(int amount)

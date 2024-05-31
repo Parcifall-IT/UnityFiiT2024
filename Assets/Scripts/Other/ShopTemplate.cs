@@ -1,11 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
 

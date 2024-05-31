@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "shopMenu", menuName = "Scriptable Objects/New shop item", order = 1)] 
 public class ShopItemScript : ScriptableObject
