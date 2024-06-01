@@ -31,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Sprite sword;
     [SerializeField] private Sprite gun;
     [SerializeField] private Sprite bullet;
+    [SerializeField] private Sprite arrow;
 
     [SerializeField] private float timeBtwMelee = 1f;
     private float meleeTimer;
@@ -57,6 +58,9 @@ public class PlayerAttack : MonoBehaviour
         weapon.GetComponent<SpriteRenderer>().sprite = fork;
 
         defaultWeaponRotation = Gun.GetComponent<Transform>().localEulerAngles.z;
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<Arrow>().SetDamage(5);
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<SpriteRenderer>().sprite = arrow;
+
     }
 
     void Update()

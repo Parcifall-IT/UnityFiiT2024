@@ -4,6 +4,8 @@ using Random = UnityEngine.Random;
 public class SpawnEnemiesTrigger : MonoBehaviour
 {
     [SerializeField] GameObject EnemyType;
+    [SerializeField] GameObject Boss;
+    [SerializeField] GameObject bossHealth;
     [SerializeField] int AmountOfEnemies;
     [SerializeField] string TagFilter = "Player";
     [SerializeField] float minX = -13;
@@ -16,11 +18,16 @@ public class SpawnEnemiesTrigger : MonoBehaviour
     private int spawnedEnemies;
     private int aliveEnemies;
     private bool isAbleToSpawn = true;
+    private int[] wave = new int[] { 3, 4, 6};
+    private int currentWave;
+
+    [SerializeField] private GameObject Tips;
 
     private void Start()
     {
         pressedButton.SetActive(false);
-        AmountOfEnemies = 3;
+        currentWave = 0;
+        AmountOfEnemies = wave[currentWave];
     }
 
     // private void Update()
@@ -59,7 +66,15 @@ public class SpawnEnemiesTrigger : MonoBehaviour
 
     void SpawnEnemies()
     {
+        if (currentWave > 2)
+        {
+            BossFight();
+            return;
+        }
+        
         pressedButton.SetActive(true);
+        Tips.GetComponent<ShowTips>().Vanish();
+
         spawnedEnemies = 0;
         aliveEnemies = AmountOfEnemies;
         
@@ -72,7 +87,32 @@ public class SpawnEnemiesTrigger : MonoBehaviour
             spawnedEnemies++;
             isAbleToSpawn = false;
         }
-        AmountOfEnemies += 2;
+        currentWave++;
+        AmountOfEnemies = wave[currentWave];
+    }
+
+    private void BossFight()
+    {
+        bossHealth.active = true;
+        pressedButton.SetActive(true);
+        spawnedEnemies = 0;
+        AmountOfEnemies = 3;
+        aliveEnemies = AmountOfEnemies + 1;
+
+        while (spawnedEnemies < AmountOfEnemies)
+        {
+            xPos = Random.Range(minX, maxX);
+            yPos = Random.Range(minY, maxY);
+            var enemy = Instantiate(EnemyType, new Vector2(xPos, yPos), Quaternion.identity);
+            enemy.GetComponent<FlyEnemy>().OnEnemyKilled += HandleEnemyKilled;
+            spawnedEnemies++;
+            isAbleToSpawn = false;
+        }
+
+        xPos = Random.Range(minX, maxX);
+        yPos = Random.Range(minY, maxY);
+        var boss = Instantiate(Boss, new Vector2(xPos, yPos), Quaternion.identity);
+        boss.GetComponent<Boss>().OnEnemyKilled += EndBossFight;
     }
 
     private void HandleEnemyKilled()
@@ -81,7 +121,15 @@ public class SpawnEnemiesTrigger : MonoBehaviour
         if (aliveEnemies <= 0)
         {
             pressedButton.SetActive(false);
+            Tips.GetComponent<ShowTips>().Show();
             isAbleToSpawn = true;
         }
+    }
+
+    private void EndBossFight()
+    {
+        bossHealth.active = false;
+        HandleEnemyKilled();
+        Debug.Log("ЕБААААТЬ");
     }
 }

@@ -34,6 +34,8 @@ public class GameUI : MonoBehaviour
             Q.gameObject.SetActive(false);
             E.gameObject.SetActive(true);
         }
+
+        
     }
 
     public void ChangeDistance(Sprite sprite)

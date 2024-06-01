@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class TableOutlineEffect : MonoBehaviour
 {
     [SerializeField] private GameObject outline;
+    [SerializeField] private GameObject tip;
 
     void Start()
     {
@@ -20,6 +22,7 @@ public class TableOutlineEffect : MonoBehaviour
             if (outline != null)
             {
                 outline.GetComponent<SpriteRenderer>().enabled = true;
+                tip.active = true;
             }
         }
     }
@@ -32,6 +35,7 @@ public class TableOutlineEffect : MonoBehaviour
             if (outline != null)
             {
                 outline.GetComponent<SpriteRenderer>().enabled = false;
+                tip.active = false;
             }
         }
     }
