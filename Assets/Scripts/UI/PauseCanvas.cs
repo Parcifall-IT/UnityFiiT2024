@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseCanvas : MonoBehaviour
 {
@@ -39,5 +40,13 @@ public class PauseCanvas : MonoBehaviour
         playerPause.SetActive(isOpened);
 
         EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }
