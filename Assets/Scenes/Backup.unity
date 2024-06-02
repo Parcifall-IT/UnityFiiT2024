@@ -1437,19 +1437,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5095242847534225177, guid: b5d8bff0269ed1347b565a7f0cdc9c01, type: 3}
   m_PrefabInstance: {fileID: 195022901}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &207022086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6991435079156151324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a66c18b875897784ea897f05c8709364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endGameCanvas: {fileID: 7049925744429279520}
 --- !u!4 &215698420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1080455376314360585, guid: e6ef636a23d1687409b902472f159d17, type: 3}
@@ -7838,6 +7825,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420034}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8028,6 +8016,28 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c7e57389aeeac4ba15eca5c2f13e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rari: {fileID: 8300000, guid: 8e6589d5fa61c1943a9eb61c0be4e3e6, type: 3}
+  Farm: {fileID: 8300000, guid: ddf1a1a40e0257341bd3d020582afc77, type: 3}
+  Boss: {fileID: 8300000, guid: c8ebe21f7f1a5264ebb12e46e9ebe963, type: 3}
+  Shoots:
+  - {fileID: 8300000, guid: 2ba8798344c7d584890b2eecf85c7800, type: 3}
+  - {fileID: 8300000, guid: 74cf836749891524ba59685aadefe16a, type: 3}
+  Melee: {fileID: 8300000, guid: bbbf44d3aab29a34f88b5410e6ea5d30, type: 3}
+  Dead: {fileID: 8300000, guid: e18ad30cf0db6ec4597ae2b2aec8a31c, type: 3}
+  Am: {fileID: 8300000, guid: 0346ad88480639046b916d90fe052b79, type: 3}
+  audioSource: {fileID: 1108916876}
 --- !u!1 &533017421
 GameObject:
   m_ObjectHideFlags: 0
@@ -18760,7 +18770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &879467469
 Transform:
   m_ObjectHideFlags: 0
@@ -20135,6 +20145,133 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0849b249a3942d488b9d343a239106e, type: 3}
+--- !u!1 &1108916874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108916875}
+  - component: {fileID: 1108916876}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Music
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1108916875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108916874}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.14, y: 0.33, z: 113.08066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088188705}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1108916876
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108916874}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1110292970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22873,7 +23010,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03900814, y: -11.707192}
+  m_Offset: {x: 0.03900814, y: -11.565632}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -22884,7 +23021,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 29.899096, y: 1.4721909}
+  m_Size: {x: 29.899096, y: 1.7553148}
   m_EdgeRadius: 0
 --- !u!61 &1845768634
 BoxCollider2D:
@@ -22899,7 +23036,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 14.226286, y: 0.0347023}
+  m_Offset: {x: 14.114554, y: 0.0347023}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -22910,7 +23047,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4908981, y: 24.964087}
+  m_Size: {x: 1.7143612, y: 24.964087}
   m_EdgeRadius: 0
 --- !u!61 &1845768635
 BoxCollider2D:
@@ -22925,7 +23062,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -8.07975, y: 11.7393465}
+  m_Offset: {x: -7.57083, y: 11.638047}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -22936,7 +23073,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.874508, y: 1.464323}
+  m_Size: {x: 14.892348, y: 1.6669216}
   m_EdgeRadius: 0
 --- !u!61 &1845768636
 BoxCollider2D:
@@ -22951,7 +23088,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -14.264864, y: -6.4825177}
+  m_Offset: {x: -14.197841, y: -6.007844}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -22962,7 +23099,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.504281, y: 11.796983}
+  m_Size: {x: 1.6383266, y: 12.74633}
   m_EdgeRadius: 0
 --- !u!61 &1845768637
 BoxCollider2D:
@@ -22977,7 +23114,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 8.040624, y: 11.7606125}
+  m_Offset: {x: 7.4156337, y: 11.668478}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -22988,7 +23125,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.9187565, y: 1.4836578}
+  m_Size: {x: 15.168736, y: 1.6679258}
   m_EdgeRadius: 0
 --- !u!61 &1845768638
 BoxCollider2D:
@@ -23003,7 +23140,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -14.261866, y: 7.075098}
+  m_Offset: {x: -14.206013, y: 6.3766494}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -23014,7 +23151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4762726, y: 10.854689}
+  m_Size: {x: 1.5879774, y: 12.251586}
   m_EdgeRadius: 0
 --- !u!61 &1845768639
 BoxCollider2D:
@@ -24359,6 +24496,7 @@ Transform:
   - {fileID: 1252935783}
   - {fileID: 1966015007}
   - {fileID: 1751924017}
+  - {fileID: 1108916875}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24374,7 +24512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d144aceb2674734581d3cb0697eba73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 5
 --- !u!50 &2088188707
 Rigidbody2D:
   serializedVersion: 4
@@ -24500,6 +24638,7 @@ MonoBehaviour:
   alive: {fileID: 1252935782}
   dead: {fileID: 1966015006}
   blood: {fileID: 1849294662}
+  endGameManager: {fileID: 7049925744429279520}
 --- !u!114 &2088188713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24821,8 +24960,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 300}
+  m_AnchoredPosition: {x: 0, y: 108.1}
+  m_SizeDelta: {x: 500, y: 83.74078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &49973357949462147
 RectTransform:
@@ -25023,7 +25162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -25031,8 +25170,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.7019608, b: 0.4, a: 1}
+    m_PressedColor: {r: 0.6509804, g: 0.32156864, b: 0.15686275, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -29637,7 +29776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66c18b875897784ea897f05c8709364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endGameCanvas: {fileID: 7049925744429279520}
+  end: {fileID: 7049925744429279520}
 --- !u!114 &3712251285525685486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33660,7 +33799,6 @@ GameObject:
   - component: {fileID: 6991435079156151325}
   - component: {fileID: 6991435079156151521}
   - component: {fileID: 6991435079156151526}
-  - component: {fileID: 207022086}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Canvas
@@ -34639,7 +34777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7092132260471836307
 GameObject:
   m_ObjectHideFlags: 0
@@ -37096,18 +37234,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
         m_MethodName: BuyItem
         m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8370663521750567946}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: set_interactable
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

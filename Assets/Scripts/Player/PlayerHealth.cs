@@ -11,17 +11,20 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] private GameObject alive;
     [SerializeField] private GameObject dead;
     [SerializeField] private Image blood;
-    private EndGameManager endGameManager;
+    [SerializeField] private GameObject endGameManager;
+    private bool isDead;
 
 
     void Start()
     {
         currentHeath = maxHealth;
-        endGameManager = FindObjectOfType<EndGameManager>();
+        isDead = false;
     }
 
     public void Damage(float damageAmount)
     {
+        if (isDead)
+            return;
         HasTakenDamage = true;
         currentHeath -= damageAmount;
 
@@ -31,6 +34,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (currentHeath <= 0)
         {
             Die();
+            isDead = true;
             return;
         }
         Debug.Log(128f - 128 * currentHeath / maxHealth);
@@ -48,11 +52,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         dead.SetActive(true);
         GetComponent<BoxCollider2D>().enabled = false;
         Debug.Log("Man im dead");
-        
-        if (endGameManager != null)
-            endGameManager.ShowEndGameScreen();
-        else
-            Debug.LogError("EndGameManager not found");
+        endGameManager.GetComponent<EndGameManager>().ShowEndGameScreen();
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Audio>().PlayDead();
     }
 
     public void RestoreHealth(int amount)
@@ -61,5 +62,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (currentHeath > maxHealth)
             currentHeath = maxHealth;
         healthBar.GetComponent<Image>().fillAmount = currentHeath / maxHealth;
+        blood.GetComponent<Image>().color = new Color(255f, 255f, 255f, (128f - 128 * currentHeath / maxHealth) / 255);
     }
 }

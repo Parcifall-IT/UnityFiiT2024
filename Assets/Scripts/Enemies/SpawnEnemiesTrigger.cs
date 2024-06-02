@@ -8,10 +8,10 @@ public class SpawnEnemiesTrigger : MonoBehaviour
     [SerializeField] GameObject bossHealth;
     [SerializeField] int AmountOfEnemies;
     [SerializeField] string TagFilter = "Player";
-    [SerializeField] float minX = -9;
-    [SerializeField] float maxX = 10;
-    [SerializeField] float minY = -12;
-    [SerializeField] float maxY = 4;
+    [SerializeField] float minX = -8;
+    [SerializeField] float maxX = 9;
+    [SerializeField] float minY = -11;
+    [SerializeField] float maxY = 3;
     [SerializeField] private GameObject pressedButton;
     private float xPos;
     private float yPos;
@@ -93,6 +93,7 @@ public class SpawnEnemiesTrigger : MonoBehaviour
 
     private void BossFight()
     {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Audio>().PlayBoss();
         bossHealth.active = true;
         pressedButton.SetActive(true);
         spawnedEnemies = 0;
@@ -140,5 +141,6 @@ public class SpawnEnemiesTrigger : MonoBehaviour
         HandleEnemyKilled();
         Debug.Log("ЕБААААТЬ");
         isAbleToSpawn = false;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Audio>().PlayFarm();
     }
 }

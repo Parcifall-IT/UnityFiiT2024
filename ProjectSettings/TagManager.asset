@@ -9,6 +9,7 @@ TagManager:
   - Canvas
   - BossHealth
   - Wall
+  - Music
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,7 @@
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float speed = 12f;
+    [SerializeField] private float speed = 5f;
     private Vector2 moveVector;
     private Animator anim;
 
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        if (GamePause.IsPaused)
+        if (GamePause.IsPaused || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().GetHealth() <= 0)
             return;
 
         moveVector.x = Input.GetAxis("Horizontal");

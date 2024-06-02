@@ -12,6 +12,8 @@ public class BossAttack : MonoBehaviour
     [SerializeField] float maxX = 13;
     [SerializeField] float minY = -11;
     [SerializeField] float maxY = 11;
+    [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioSource audioSource;
     private float spawnDelay = 1f;
     private float xPos;
     private float yPos;
@@ -26,16 +28,16 @@ public class BossAttack : MonoBehaviour
         var nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         GetComponent<Animator>().SetTrigger("Spawn");
 
+        PlayAudio();
         Invoke("Spawn", spawnDelay);
 
         // Вызываем метод SpawnEnemy с задержкой в случайное время nextSpawnTime + spawnDelay
-        Invoke("Spawn", nextSpawnTime + spawnDelay);
+        Invoke("SpawnEnemy", nextSpawnTime);
     }
 
     void Spawn()
     {
         var spawnedEnemies = 0;
-
         while (spawnedEnemies < 4)
         {
             xPos = Random.Range(minX, maxX);
@@ -48,5 +50,10 @@ public class BossAttack : MonoBehaviour
 
     private void HandleEnemyKilled()
     {
+    }
+
+    void PlayAudio()
+    {
+        audioSource.PlayOneShot(attackSound, 0.7f);
     }
 }

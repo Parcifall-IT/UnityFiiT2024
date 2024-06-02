@@ -18,7 +18,7 @@ public class BossMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GamePause.IsPaused)
+        if (GamePause.IsPaused || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().GetHealth() <= 0)
             return;
 
         transform.Translate(direction * speed * Time.deltaTime);
@@ -32,7 +32,7 @@ public class BossMovement : MonoBehaviour
         if (collider.gameObject.tag == "Wall")
         {
             var normal = (transform.position - collider.transform.position).normalized;
-            direction = Vector3.Reflect(direction, normal);
+            direction = Vector2.Reflect(direction, normal);
         }
     }
 

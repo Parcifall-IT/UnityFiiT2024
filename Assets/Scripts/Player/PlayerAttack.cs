@@ -42,13 +42,14 @@ public class PlayerAttack : MonoBehaviour
     private List<IDamageable> iDamageables = new List<IDamageable>();
 
     private float defaultWeaponRotation;
+    private int choosedGun;
 
 
     void Start()
     {
         VFXMelee = VFXMelee.GetComponent<ParticleSystem>();
         VFXMelee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-
+        choosedGun = 0;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         attackAngle = 0;
@@ -65,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (GamePause.IsPaused || Time.timeScale == 0)
+        if (GamePause.IsPaused || Time.timeScale == 0 || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().GetHealth() <= 0)
             return;
 
         pos = Camera.main.WorldToScreenPoint(transform.localPosition);
@@ -95,6 +96,7 @@ public class PlayerAttack : MonoBehaviour
                 if (distanceTimer > timeBtwDistance)
                 {
                     distanceTimer = 0;
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Audio>().PlayShoot(choosedGun);
                     animator.SetTrigger("AttackDistance");
                     //DistanceAttack();
                 }
@@ -141,6 +143,7 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator MeleeAttack()
     {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Audio>().PlayMelee();
         ShouldBeDamagingToTrue();
 
         while (ShouldBeDamageing)
@@ -209,6 +212,7 @@ public class PlayerAttack : MonoBehaviour
         if (choosedWeapon == 0)
             weapon.GetComponent<SpriteRenderer>().sprite = gun;
         GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<Arrow>().SetDamage(15);
+        choosedGun = 1;
     }
 
     public void ChangeMelee(Sprite newMelee, int damage)

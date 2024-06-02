@@ -86,6 +86,7 @@ public class ShopManager : MonoBehaviour
 
     private void BuyNewGun(Sprite newSprite)
     {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Audio>().PlayRari();
         GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameUI>().ChangeDistance(newSprite);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().ChangeGun(newSprite);
     }

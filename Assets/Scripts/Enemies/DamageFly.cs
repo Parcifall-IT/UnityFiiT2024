@@ -15,6 +15,7 @@ public class DamageFly : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Audio>().PlayAm();
             Player.GetComponent<IDamageable>().Damage(damageAmount);
             GetComponent<Rigidbody2D>().AddForce(collision.contacts[0].normal * this.GetComponent<Rigidbody2D>().mass * forceRepulsion);
         }

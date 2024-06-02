@@ -15,7 +15,7 @@ public class ChasePlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GamePause.IsPaused)
+        if (GamePause.IsPaused || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().GetHealth() <= 0)
             return;
 
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);

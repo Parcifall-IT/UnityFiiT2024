@@ -3,18 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class EndGameManager : MonoBehaviour
 {
-    public GameObject endGameCanvas;
+    [SerializeField] private GameObject end;
 
     void Start()
     {
-        if (endGameCanvas != null)
-            endGameCanvas.SetActive(false);
+        end.SetActive(false);
     }
 
     public void ShowEndGameScreen()
     {
-        if (endGameCanvas != null)
-            endGameCanvas.SetActive(true);
+        end.SetActive(true);
     }
 
     public void StartOver()

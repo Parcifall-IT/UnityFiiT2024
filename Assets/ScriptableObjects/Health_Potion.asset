@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Health_Potion
   m_EditorClassIdentifier: 
   title: Snot
-  description: Restores 100 health points
+  description: Restores 50 health points
   basePrice: 60
   category: Health
-  healthRestored: 60
+  healthRestored: 50
   image: {fileID: 2800000, guid: 3a555b55799fa0046ad04da8e1351c74, type: 3}

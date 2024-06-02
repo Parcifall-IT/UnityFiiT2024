@@ -13,11 +13,13 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainAudio>().FadeOut();
         sceneTransition.FadeToScene("Backup");
     }
 
     public void ContinueGame()
     {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainAudio>().FadeOut();
         sceneTransition.FadeToScene("Backup");
         Debug.Log("Todo");
     }

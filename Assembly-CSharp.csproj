@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Enemies\DamageFly.cs" />
     <Compile Include="Assets\Scripts\UI\AnimatorController.cs" />
     <Compile Include="Assets\Scripts\Other\OpenDoor.cs" />
+    <Compile Include="Assets\Scripts\Other\Audio.cs" />
     <Compile Include="Assets\Scripts\UI\ShowTips.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Assets\Scripts\Other\UpgradeMenu.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Guns\Arbalest.cs" />
+    <Compile Include="Assets\Scripts\Other\MainAudio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
