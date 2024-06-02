@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +18,6 @@ public class DamageUI : MonoBehaviour
         {
             var delta = 1f - (Timer / maxTime);
             var pos = unitPosition + new Vector2(delta, delta) * direction;
-            pos = camera.WorldToScreenPoint(pos);
 
             UIText.transform.position = pos;
         }

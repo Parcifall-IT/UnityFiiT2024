@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 
@@ -33,7 +30,8 @@ public class PauseCanvas : MonoBehaviour
     public void ShowHideMenu()
     {
         GamePause.SetPause(!isOpened);
-        
+        Time.timeScale = isOpened ? 1 : 0;
+
         isOpened = !isOpened;
         GetComponent<Canvas>().enabled = isOpened;
 

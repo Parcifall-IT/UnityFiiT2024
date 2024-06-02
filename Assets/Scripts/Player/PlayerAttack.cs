@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private GameObject Gun;
+    [SerializeField] private ParticleSystem VFXMelee;
 
     private double attackAngle;
 
@@ -23,19 +22,50 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float damageAmount = 1f;
     private RaycastHit2D[] hits;
 
-    public bool ShouldBeDamageing { get; private set; } = false;
+    public static bool ShouldBeDamageing { get; private set; } = false;
+
+    private Animator animator;
+
+    [SerializeField] private GameObject weapon;
+    [SerializeField] private Sprite fork;
+    [SerializeField] private Sprite sword;
+    [SerializeField] private Sprite gun;
+    [SerializeField] private Sprite bullet;
+    [SerializeField] private Sprite arrow;
+
+    [SerializeField] private float timeBtwMelee = 1f;
+    private float meleeTimer;
+    [SerializeField] private float timeBtwDistance = 1.5f;
+    private float distanceTimer;
+    private bool canlook;
+    public bool ShouldBeDamaging { get; private set; } = false;
+    private List<IDamageable> iDamageables = new List<IDamageable>();
+
+    private float defaultWeaponRotation;
 
 
     void Start()
     {
+        VFXMelee = VFXMelee.GetComponent<ParticleSystem>();
+        VFXMelee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         attackAngle = 0;
         choosedWeapon = 1;
+        meleeTimer = timeBtwMelee;
+        distanceTimer = timeBtwDistance;
+        weapon.GetComponent<SpriteRenderer>().sprite = fork;
+
+        defaultWeaponRotation = Gun.GetComponent<Transform>().localEulerAngles.z;
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<Arrow>().SetDamage(5);
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<SpriteRenderer>().sprite = arrow;
+
     }
 
     void Update()
     {
-        if (GamePause.IsPaused)
+        if (GamePause.IsPaused || Time.timeScale == 0)
             return;
 
         pos = Camera.main.WorldToScreenPoint(transform.localPosition);
@@ -46,21 +76,47 @@ public class PlayerAttack : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.Q))
+        {
+            weapon.GetComponent<SpriteRenderer>().sprite = gun;
             choosedWeapon = 0;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
+        {
+            weapon.GetComponent<SpriteRenderer>().sprite = fork;
+            Gun.GetComponent<Transform>().localRotation = Quaternion.Euler(0, 0, defaultWeaponRotation);
             choosedWeapon = 1;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
             if (choosedWeapon == 0)
-                DistanceAttack(attackAngle);
+            {
+                if (distanceTimer > timeBtwDistance)
+                {
+                    distanceTimer = 0;
+                    animator.SetTrigger("AttackDistance");
+                    //DistanceAttack();
+                }
+            }
             else
-                MeleeAttack(attackAngle);
+            {
+                if (meleeTimer > timeBtwMelee)
+                {
+                    meleeTimer = 0;
+                    animator.SetTrigger("AttackMelee");
+                }
+            }
         }
+        meleeTimer += Time.deltaTime;
+        distanceTimer += Time.deltaTime;
 
-        RotateGun(attackAngle);
-        LookAtCursor();
+        canlook = meleeTimer > timeBtwMelee && distanceTimer > timeBtwDistance;
+
+        if (choosedWeapon == 0)
+            RotateGun(attackAngle);
+        if (canlook)
+            LookAtCursor();
     }
 
     void LookAtCursor()
@@ -78,28 +134,46 @@ public class PlayerAttack : MonoBehaviour
 
     private double FindAngle(Vector2 a, Vector2 b)
     {
-        var angle = Mathf.Acos((b.y - a.y) / Mathf.Sqrt((b - a).x * (b - a).x + (b - a).y * (b - a).y)) * 180 / Mathf.PI;
+        var angle = Mathf.Acos((b.y - a.y) / Mathf.Sqrt((b - a).x * (b - a).x + (b - a).y * (b - a).y)) * 180 /
+                    Mathf.PI;
         return angle;
     }
 
-    void MeleeAttack(double angle)
+    public IEnumerator MeleeAttack()
     {
-        hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attacableLayer);
+        ShouldBeDamagingToTrue();
 
-        for (var i = 0; i < hits.Length; i++)
+        while (ShouldBeDamageing)
         {
-            var iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+            hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attacableLayer);
 
-            if (iDamageable != null)
+            for (var i = 0; i < hits.Length; i++)
             {
-                iDamageable.Damage(damageAmount);
+                var iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                if (iDamageable != null && !iDamageable.HasTakenDamage)
+                {
+                    iDamageable.Damage(damageAmount);
+                    iDamageables.Add(iDamageable);
+                }
             }
+            yield return null;
+        }
+
+        ReturnAttackablesToDamageable();
+    }
+
+    private void ReturnAttackablesToDamageable()
+    {
+        foreach (var thing in iDamageables)
+        {
+            thing.HasTakenDamage = false;
         }
     }
 
-    void DistanceAttack(double angle)
+    void DistanceAttack()
     {
-        Debug.Log(("Distance"));
+        GetComponentInChildren<Arbalest>().Shoot();
     }
 
     void RotateGun(double angle)
@@ -110,5 +184,38 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
+    }
+
+    #region Animation Triggers
+
+    public void ShouldBeDamagingToTrue()
+    {
+        ShouldBeDamageing = true;
+        VFXMelee.Play();
+    }
+
+    public void ShouldBeDamagingToFalse()
+    {
+        ShouldBeDamageing = false;
+        VFXMelee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    }
+
+    #endregion
+
+    public void ChangeGun(Sprite newGun)
+    {
+        gun = newGun;
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<SpriteRenderer>().sprite = bullet;
+        if (choosedWeapon == 0)
+            weapon.GetComponent<SpriteRenderer>().sprite = gun;
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<Arrow>().SetDamage(15);
+    }
+
+    public void ChangeMelee(Sprite newMelee, int damage)
+    {
+        damageAmount = damage;
+        fork = newMelee;
+        if (choosedWeapon == 1)
+            weapon.GetComponent<SpriteRenderer>().sprite = fork;
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ddb84d2d9a38f488f3e5f800bbb67e, type: 3}
+  m_Name: WeaponUpgrade_Gun
+  m_EditorClassIdentifier: 
+  title: Gun
+  description: .______.
+  basePrice: 2000
+  category: Upgrades
+  healthRestored: 0
+  image: {fileID: 2800000, guid: dc70d98275356f9489f28892dc81953c, type: 3}

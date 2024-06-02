@@ -1,16 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static UnityEditor.PlayerSettings;
+﻿using UnityEngine;
 
 public class ChasePlayer : MonoBehaviour
 {
     [SerializeField] private bool facingRight = false;
-    [SerializeField] private GameObject player;
+    private GameObject player;
     [SerializeField] private float speed = 3;
     private Vector2 pos;
+    [SerializeField] private float force_repulsion = 2f;
 
-    void Update()
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void FixedUpdate()
     {
         if (GamePause.IsPaused)
             return;
