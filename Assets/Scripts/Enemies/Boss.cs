@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour, IDamageable
 {
     public event Action OnEnemyKilled;
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float maxHealth = 200f;
     //[SerializeField] private PlayerCoins coins;
     //private readonly int coinsToDrop = 10;
     private float currentHeath;    

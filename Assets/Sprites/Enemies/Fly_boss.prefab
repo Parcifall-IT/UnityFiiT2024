@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d335e581785500489a08bb2c8a82650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
 --- !u!114 &2619959650741522368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,10 +148,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyType: {fileID: 1670551718253160198, guid: 624305376cb9f064baaf77d15240b4af, type: 3}
-  minX: -13
-  maxX: 13
+  minX: -9
+  maxX: 11
   minY: -11
-  maxY: 11
+  maxY: 4
   attackSound: {fileID: 8300000, guid: bf45937b100a854428cc99fdded2c6bf, type: 3}
   audioSource: {fileID: 5385713758223211402}
 --- !u!1 &1485056157579834528

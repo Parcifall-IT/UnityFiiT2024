@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Gun
   description: .______.
-  basePrice: 2000
+  basePrice: 120
   category: Upgrades
   healthRestored: 0
   image: {fileID: 2800000, guid: dc70d98275356f9489f28892dc81953c, type: 3}

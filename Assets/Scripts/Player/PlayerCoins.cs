@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class PlayerCoins : MonoBehaviour
 {
-    public int currentCoins;
+    private int currentCoins;
 
     [SerializeField] private TMP_Text coinsText;
     // Start is called before the first frame update
     void Start()
     {
+        currentCoins = 30;
         UpdateCoinsText();
     }
 
@@ -34,9 +35,8 @@ public class PlayerCoins : MonoBehaviour
         coinsText.text = "Coins: " + currentCoins;
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetCoins()
     {
-        
+        return currentCoins;
     }
 }

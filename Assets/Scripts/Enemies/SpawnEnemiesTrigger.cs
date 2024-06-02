@@ -66,15 +66,14 @@ public class SpawnEnemiesTrigger : MonoBehaviour
 
     void SpawnEnemies()
     {
+        pressedButton.SetActive(true);
+        Tips.GetComponent<ShowTips>().Vanish();
         if (currentWave > 2)
         {
             BossFight();
             return;
         }
         
-        pressedButton.SetActive(true);
-        Tips.GetComponent<ShowTips>().Vanish();
-
         spawnedEnemies = 0;
         aliveEnemies = AmountOfEnemies;
         

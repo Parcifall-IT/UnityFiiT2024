@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform attackTransform;
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private LayerMask attacableLayer;
-    [SerializeField] private float damageAmount = 1f;
+    [SerializeField] private float damageAmount = 2f;
     private RaycastHit2D[] hits;
 
     public static bool ShouldBeDamageing { get; private set; } = false;
@@ -156,7 +156,8 @@ public class PlayerAttack : MonoBehaviour
 
                 if (iDamageable != null && !iDamageable.HasTakenDamage)
                 {
-                    iDamageable.Damage(damageAmount);
+                    Debug.Log((damageAmount - 1, damageAmount + 2));
+                    iDamageable.Damage(Random.RandomRange(damageAmount - 1, damageAmount + 2));
                     iDamageables.Add(iDamageable);
                 }
             }
@@ -211,7 +212,7 @@ public class PlayerAttack : MonoBehaviour
         GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<SpriteRenderer>().sprite = bullet;
         if (choosedWeapon == 0)
             weapon.GetComponent<SpriteRenderer>().sprite = gun;
-        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<Arrow>().SetDamage(15);
+        GameObject.FindGameObjectWithTag("Gun").GetComponent<Arbalest>().GetArrow().GetComponent<Arrow>().SetDamage(20);
         choosedGun = 1;
     }
 

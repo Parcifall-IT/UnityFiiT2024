@@ -16,14 +16,9 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] private Button[] buyButtons;
 
-    [SerializeField] private PlayerHealth playerHealth;
-
-    [SerializeField] private PlayerCoins coins;
-
-    // Start is called before the first frame update
     void Start()
     {
-        coins.UpdateCoinsText();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().UpdateCoinsText();
         // for (var i = 0; i < shopItems.Length; i++)
         // {
         //     Debug.Log("show panel: " + i);
@@ -38,6 +33,7 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckBuyAbility();
     }
 
     public void CloseShop()
@@ -48,7 +44,7 @@ public class ShopManager : MonoBehaviour
 
     public void BuyItem(int btnNumber)
     {
-        if (coins.SpendCoins(shopItems[btnNumber].basePrice))
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().SpendCoins(shopItems[btnNumber].basePrice))
         {
             var name = shopItems[btnNumber].title;
             Debug.Log("Buy item: " + btnNumber);
@@ -72,7 +68,7 @@ public class ShopManager : MonoBehaviour
                     new Vector2(0.5f, 0.5f));
                 BuyNewSword(name, sprite);
             }
-            coins.UpdateCoinsText();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().UpdateCoinsText();
             CheckBuyAbility();
         }
     }
@@ -80,7 +76,7 @@ public class ShopManager : MonoBehaviour
     private void BuyNewSword(string name, Sprite sprite)
     {
         GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameUI>().ChangeMelee(sprite);
-        var damage = name == "Sword" ? 5 : 1;
+        var damage = name == "Sword" ? 6 : 2;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().ChangeMelee(sprite, damage);
     }
 
@@ -98,8 +94,8 @@ public class ShopManager : MonoBehaviour
 
     private void AddCoins()
     {
-        coins.AddCoins(1);
-        coins.UpdateCoinsText();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().AddCoins(1);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().UpdateCoinsText();
         CheckBuyAbility();
     }
     
@@ -118,7 +114,7 @@ public class ShopManager : MonoBehaviour
         for (var i = 0; i < shopItems.Length; i++)
         {
             Debug.Log("btn " + i + " and item price: " + shopItems[i].basePrice);
-            buyButtons[i].interactable = coins.currentCoins >= shopItems[i].basePrice;
+            buyButtons[i].interactable = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().GetCoins() >= shopItems[i].basePrice;
         }
         
     }
@@ -163,6 +159,6 @@ public class ShopManager : MonoBehaviour
 
     private void BuyHealthItem(ShopItemScript item)
     {
-        playerHealth.RestoreHealth(item.healthRestored);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().RestoreHealth(item.healthRestored);
     }
 }

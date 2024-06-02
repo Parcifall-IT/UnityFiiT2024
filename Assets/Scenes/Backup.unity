@@ -13221,7 +13221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Giga Nigga
+  m_text: Beelzebub
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f06239f74cd526c4180566c1fcaf231e, type: 2}
   m_sharedMaterial: {fileID: 3975176086486177739, guid: f06239f74cd526c4180566c1fcaf231e, type: 2}
@@ -24555,7 +24555,7 @@ MonoBehaviour:
   attacableLayer:
     serializedVersion: 2
     m_Bits: 256
-  damageAmount: 1
+  damageAmount: 2
   weapon: {fileID: 174107679}
   fork: {fileID: 21300000, guid: 4ae776f2d6ec29e45b4a4b85f69bfa66, type: 3}
   sword: {fileID: 21300000, guid: eabd96068b1c0b34ea9fcfb703a34be3, type: 3}
@@ -25014,12 +25014,12 @@ MonoBehaviour:
   EnemyType: {fileID: 1670551718253160198, guid: 624305376cb9f064baaf77d15240b4af, type: 3}
   Boss: {fileID: 1485056157503477617, guid: 3fbdf8647c2bd0b45b5cf8190069915d, type: 3}
   bossHealth: {fileID: 1229436563}
-  AmountOfEnemies: 1
+  AmountOfEnemies: 0
   TagFilter: Player
-  minX: -13
-  maxX: 13
+  minX: -8
+  maxX: 9
   minY: -11
-  maxY: 11
+  maxY: 3
   pressedButton: {fileID: 3456619395391470512}
   Tips: {fileID: 1574791591}
 --- !u!58 &83811398571671070
@@ -27566,8 +27566,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.25}
-  m_SizeDelta: {x: 0, y: -6.5}
+  m_AnchoredPosition: {x: 0, y: -0.37000084}
+  m_SizeDelta: {x: 0, y: -3.170536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1394669191335780261
 CanvasRenderer:

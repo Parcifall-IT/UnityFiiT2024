@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Cheese
   description: Restores 25 health points
-  basePrice: 15
+  basePrice: 20
   category: Health
   healthRestored: 25
   image: {fileID: 2800000, guid: 724db02722a6bba4ab2dcceb5354bf1d, type: 3}

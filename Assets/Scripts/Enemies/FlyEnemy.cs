@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 public class FlyEnemy : MonoBehaviour, IDamageable
 {
     public event Action OnEnemyKilled;
-    [SerializeField] private float maxHealth = 5f;
+    [SerializeField] private float maxHealth = 7f;
     //[SerializeField] private PlayerCoins coins;
     //private readonly int coinsToDrop = 10;
     private float currentHeath;
@@ -43,7 +43,7 @@ public class FlyEnemy : MonoBehaviour, IDamageable
     public void Die()
     {
         OnEnemyKilled();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().AddCoins(Random.Range(1, 4));
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().AddCoins(Random.Range(8, 13));
         Destroy(gameObject);
     }
 }

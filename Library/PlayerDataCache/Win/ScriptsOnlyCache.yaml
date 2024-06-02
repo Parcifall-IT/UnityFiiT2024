@@ -97,8 +97,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -240,29 +242,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 16224}
     - Class: 114
-      Script: {instanceID: 16526}
+      Script: {instanceID: 16528}
     - Class: 114
-      Script: {instanceID: 16542}
+      Script: {instanceID: 16544}
     - Class: 114
-      Script: {instanceID: 16702}
+      Script: {instanceID: 16704}
     - Class: 114
-      Script: {instanceID: 16792}
+      Script: {instanceID: 16794}
     - Class: 114
-      Script: {instanceID: 16854}
+      Script: {instanceID: 16856}
     - Class: 114
-      Script: {instanceID: 17208}
+      Script: {instanceID: 17210}
     - Class: 114
-      Script: {instanceID: 17282}
+      Script: {instanceID: 17284}
     - Class: 114
-      Script: {instanceID: 17298}
+      Script: {instanceID: 17300}
     - Class: 114
-      Script: {instanceID: 17378}
+      Script: {instanceID: 17380}
     - Class: 114
-      Script: {instanceID: 17462}
+      Script: {instanceID: 17464}
     - Class: 114
-      Script: {instanceID: 17470}
+      Script: {instanceID: 17472}
     - Class: 114
-      Script: {instanceID: 17578}
+      Script: {instanceID: 17580}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -395,29 +397,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 16436}
     - Class: 114
-      Script: {instanceID: 16820}
+      Script: {instanceID: 16486}
     - Class: 114
-      Script: {instanceID: 16890}
+      Script: {instanceID: 16822}
     - Class: 114
-      Script: {instanceID: 17072}
+      Script: {instanceID: 16892}
     - Class: 114
-      Script: {instanceID: 17128}
+      Script: {instanceID: 17074}
     - Class: 114
-      Script: {instanceID: 17180}
+      Script: {instanceID: 17130}
     - Class: 114
-      Script: {instanceID: 17412}
+      Script: {instanceID: 17182}
     - Class: 114
-      Script: {instanceID: 17416}
+      Script: {instanceID: 17414}
     - Class: 114
-      Script: {instanceID: 17470}
+      Script: {instanceID: 17418}
     - Class: 114
-      Script: {instanceID: 17506}
+      Script: {instanceID: 17472}
     - Class: 114
-      Script: {instanceID: 17670}
+      Script: {instanceID: 17508}
     - Class: 114
-      Script: {instanceID: 17678}
+      Script: {instanceID: 17672}
     - Class: 114
-      Script: {instanceID: 131978}
+      Script: {instanceID: 17680}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -601,7 +603,7 @@ ScriptsOnlyBuild:
     className: Bloom
   - hash:
       serializedVersion: 2
-      Hash: af8b6dff3c84565455c9ee2596810065
+      Hash: fddca1380873fb4d18fdbacaae99185c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerCoins
@@ -673,7 +675,7 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
-      Hash: d6eb5ad84982db190c3ff8def2cf39cf
+      Hash: b6566cee91a9c88ea7a2d8acae060dfd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ShopManager
@@ -1627,6 +1629,12 @@ ScriptsOnlyBuild:
     className: CinemachineUniversalPixelPerfect
   - hash:
       serializedVersion: 2
+      Hash: 81e08d871223cd6e1084fc38368a9f5e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainAudio
+  - hash:
+      serializedVersion: 2
       Hash: 4d16cfbaa8e821a2b370e80844a0e9bc
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -2003,12 +2011,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 81e08d871223cd6e1084fc38368a9f5e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MainAudio
   platform: 5
   scenePathNames:
   - Assets/Scenes/StartMenu.unity

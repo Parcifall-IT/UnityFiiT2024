@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Arrows
   description: Crossbow arrows
-  basePrice: 7
+  basePrice: 10
   category: Ammo
   healthRestored: 0
   image: {fileID: 2800000, guid: baf4370030cb4c849b990afe5c052208, type: 3}

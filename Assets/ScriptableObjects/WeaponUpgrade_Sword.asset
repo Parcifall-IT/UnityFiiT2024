@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Sword
   description: F
-  basePrice: 30
+  basePrice: 80
   category: Upgrades
   healthRestored: 0
   image: {fileID: 2800000, guid: eabd96068b1c0b34ea9fcfb703a34be3, type: 3}

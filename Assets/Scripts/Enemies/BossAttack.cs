@@ -8,10 +8,10 @@ public class BossAttack : MonoBehaviour
     private float minSpawnTime = 10f;
     private float maxSpawnTime = 20f;
 
-    [SerializeField] float minX = -13;
-    [SerializeField] float maxX = 13;
+    [SerializeField] float minX = -9;
+    [SerializeField] float maxX = 11;
     [SerializeField] float minY = -11;
-    [SerializeField] float maxY = 11;
+    [SerializeField] float maxY = 4;
     [SerializeField] AudioClip attackSound;
     [SerializeField] AudioSource audioSource;
     private float spawnDelay = 1f;
