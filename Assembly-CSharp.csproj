@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Other\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\DamageFly.cs" />
     <Compile Include="Assets\Scripts\UI\AnimatorController.cs" />
+    <Compile Include="Assets\Scripts\Other\OpenDoor.cs" />
     <Compile Include="Assets\Scripts\UI\ShowTips.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
+    <Compile Include="Assets\Scripts\Enemies\BossAttack.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Assets\Scripts\Other\ShopItemScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamageable.cs" />
+    <Compile Include="Assets\Scripts\Enemies\BossMovement.cs" />
     <Compile Include="Assets\Scripts\Enemies\PuppetHealth.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
@@ -125,9 +128,6 @@
     <Compile Include="Assets\Scripts\Other\UpgradeMenu.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Guns\Arbalest.cs" />
-    <Compile Include="Assets\Scripts\Other\OpenDoor.cs" />
-    <Compile Include="Assets\Scripts\Enemies\BossMovement.cs" />
-    <Compile Include="Assets\Scripts\Enemies\BossAttack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

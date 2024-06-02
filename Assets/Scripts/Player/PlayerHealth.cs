@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] private Image healthBar;
     [SerializeField] private GameObject alive;
     [SerializeField] private GameObject dead;
+    [SerializeField] private Image blood;
     private EndGameManager endGameManager;
 
 
@@ -30,7 +31,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (currentHeath <= 0)
         {
             Die();
+            return;
         }
+        Debug.Log(128f - 128 * currentHeath / maxHealth);
+        blood.GetComponent<Image>().color = new Color(255f, 255f, 255f, (128f - 128 * currentHeath / maxHealth) / 255);
     }
 
     public float GetHealth()
