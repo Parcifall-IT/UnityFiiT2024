@@ -26,7 +26,8 @@ public class Boss : MonoBehaviour, IDamageable
         if (currentHeath <= 0)
         {
             // OnEnemyKilled();
-            Die();
+            GameObject.FindGameObjectWithTag("BossHealth").GetComponent<Image>().fillAmount = 1;
+            OnEnemyKilled();
         }
     }
 
@@ -40,10 +41,8 @@ public class Boss : MonoBehaviour, IDamageable
         return currentHeath;
     }
 
-    private void Die()
+    public void Die()
     {
-        OnEnemyKilled();
-        GameObject.FindGameObjectWithTag("BossHealth").GetComponent<Image>().fillAmount = 1;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().AddCoins(Random.Range(20, 31));
         Destroy(gameObject);
     }

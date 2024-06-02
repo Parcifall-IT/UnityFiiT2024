@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1485056157503477627}
   - component: {fileID: 1485056157503477620}
   - component: {fileID: 1485056157503477621}
-  - component: {fileID: 1485056157503477622}
   - component: {fileID: 1485056157503477623}
   - component: {fileID: 1485056157503477616}
+  - component: {fileID: 2619959650741522368}
+  - component: {fileID: 1335093635790918847}
   m_Layer: 8
   m_Name: Fly_boss
   m_TagString: Enemy
@@ -87,22 +88,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.5962625, y: 8.829321}
   m_Size: {x: 6.263292, y: 9.205703}
   m_Direction: 0
---- !u!58 &1485056157503477622
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485056157503477617}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.60909224, y: 6.8430734}
-  serializedVersion: 2
-  m_Radius: 8.794597
 --- !u!95 &1485056157503477623
 Animator:
   serializedVersion: 3
@@ -135,7 +120,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  healthBar: {fileID: 0}
+--- !u!114 &2619959650741522368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485056157503477617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc3328d9b8d22243b390ecca18030ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingRight: 0
+  speed: 2
+--- !u!114 &1335093635790918847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485056157503477617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad800e5ad1ac4445866b1657c7558e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyType: {fileID: 1670551718253160198, guid: 624305376cb9f064baaf77d15240b4af, type: 3}
+  minX: -13
+  maxX: 13
+  minY: -11
+  maxY: 11
 --- !u!1 &1485056157579834528
 GameObject:
   m_ObjectHideFlags: 0

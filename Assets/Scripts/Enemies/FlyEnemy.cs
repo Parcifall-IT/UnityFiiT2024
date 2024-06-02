@@ -40,7 +40,7 @@ public class FlyEnemy : MonoBehaviour, IDamageable
         return currentHeath;
     }
 
-    private void Die()
+    public void Die()
     {
         OnEnemyKilled();
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCoins>().AddCoins(Random.Range(1, 4));

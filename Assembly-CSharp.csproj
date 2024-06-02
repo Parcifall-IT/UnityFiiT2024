@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Other\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\DamageFly.cs" />
     <Compile Include="Assets\Scripts\UI\AnimatorController.cs" />
+    <Compile Include="Assets\Scripts\UI\ShowTips.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
@@ -80,8 +81,10 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Other\ShopTemplate.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Boss.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scripts\UI\EndGameManager.cs" />
+    <Compile Include="Assets\Scripts\Camera\ErrorSwitch.cs" />
     <Compile Include="Assets\Scripts\Enemies\ChasePlayer.cs" />
     <Compile Include="Assets\Scripts\Guns\Arrow.cs" />
     <Compile Include="Assets\Scripts\Other\TableOutlineEffect.cs" />
@@ -122,9 +125,9 @@
     <Compile Include="Assets\Scripts\Other\UpgradeMenu.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Guns\Arbalest.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Boss.cs" />
-    <Compile Include="Assets\Scripts\UI\ShowTips.cs" />
-    <Compile Include="Assets\Scripts\Camera\ErrorSwitch.cs" />
+    <Compile Include="Assets\Scripts\Other\OpenDoor.cs" />
+    <Compile Include="Assets\Scripts\Enemies\BossMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemies\BossAttack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

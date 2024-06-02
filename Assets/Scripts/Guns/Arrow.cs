@@ -12,7 +12,8 @@ public class Arrow : MonoBehaviour
         "SpawnWaveButton",
         "AnotherRoom",
         "Room",
-        "table"
+        "table",
+        "CameraTrigger"
     };
 
     [SerializeField] private float damageAmount = 5f;

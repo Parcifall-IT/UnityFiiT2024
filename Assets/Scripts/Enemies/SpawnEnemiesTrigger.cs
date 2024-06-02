@@ -8,10 +8,10 @@ public class SpawnEnemiesTrigger : MonoBehaviour
     [SerializeField] GameObject bossHealth;
     [SerializeField] int AmountOfEnemies;
     [SerializeField] string TagFilter = "Player";
-    [SerializeField] float minX = -13;
-    [SerializeField] float maxX = 13;
-    [SerializeField] float minY = -11;
-    [SerializeField] float maxY = 11;
+    [SerializeField] float minX = -9;
+    [SerializeField] float maxX = 10;
+    [SerializeField] float minY = -12;
+    [SerializeField] float maxY = 4;
     [SerializeField] private GameObject pressedButton;
     private float xPos;
     private float yPos;
@@ -88,7 +88,7 @@ public class SpawnEnemiesTrigger : MonoBehaviour
             isAbleToSpawn = false;
         }
         currentWave++;
-        AmountOfEnemies = wave[currentWave];
+        AmountOfEnemies = wave[currentWave % 3];
     }
 
     private void BossFight()
@@ -128,8 +128,17 @@ public class SpawnEnemiesTrigger : MonoBehaviour
 
     private void EndBossFight()
     {
+        foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            if (enemy.TryGetComponent<FlyEnemy>(out var z))
+                z.Die();
+            if (enemy.TryGetComponent<Boss>(out var v))
+                v.Die();
+        }
+        
         bossHealth.active = false;
         HandleEnemyKilled();
         Debug.Log("ЕБААААТЬ");
+        isAbleToSpawn = false;
     }
 }
